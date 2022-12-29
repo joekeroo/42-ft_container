@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:32:38 by jhii              #+#    #+#             */
-/*   Updated: 2022/12/23 16:17:02 by jhii             ###   ########.fr       */
+/*   Updated: 2022/12/29 15:17:23 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include <iostream>
 # include "Vector.hpp"
 
+void	testStack(void);
 void	testVector(void);
 void	testVectorAll(void);
 void	testVectorConstructor(void);
