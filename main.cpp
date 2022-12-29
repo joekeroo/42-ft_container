@@ -6,14 +6,16 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:24:58 by jhii              #+#    #+#             */
-/*   Updated: 2022/12/23 16:17:12 by jhii             ###   ########.fr       */
+/*   Updated: 2022/12/28 14:08:59 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Vector.hpp"
+#include "Stack.hpp"
 
 int	main(void)
 {
 	testVector();
+	testStack();
 	return (0);
 }
