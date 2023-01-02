@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:48:08 by jhii              #+#    #+#             */
-/*   Updated: 2022/12/23 16:14:01 by jhii             ###   ########.fr       */
+/*   Updated: 2023/01/02 14:46:28 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ using namespace	ft;
 template <class T, class Alloc>
 vector<T, Alloc>::vector(allocator_type const &alloc): _size(0), _capacity(0), _arr(NULL), _alloc(alloc)
 {
-	std::cout << GREEN "Vector constructor called" RESET << std::endl;
+	// std::cout << GREEN "Vector constructor called" RESET << std::endl;
 }
 
 template <class T, class Alloc>
 vector<T, Alloc>::vector(size_type n, value_type const &value, allocator_type const &alloc): _alloc(alloc)
 {
-	std::cout << GREEN "Vector constructor called" RESET << std::endl;
+	// std::cout << GREEN "Vector constructor called" RESET << std::endl;
 	this->_size = n;
 	this->_capacity = n;
 	if (this->_size > 0)
@@ -43,7 +43,7 @@ template <class T, class Alloc>
 template <class InputIterator>
 vector<T, Alloc>::vector(InputIterator first, InputIterator last, allocator_type const &alloc, typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type*): _alloc(alloc)
 {
-	std::cout << GREEN "Vector constructor called" RESET << std::endl;
+	// std::cout << GREEN "Vector constructor called" RESET << std::endl;
 	difference_type	size = last - first;
 	if (size > 0)
 	{
@@ -64,7 +64,7 @@ vector<T, Alloc>::vector(InputIterator first, InputIterator last, allocator_type
 template <class T, class Alloc>
 vector<T, Alloc>::vector(vector const &ref)
 {
-	std::cout << GREEN "Vector copy constructor called" RESET << std::endl;
+	// std::cout << GREEN "Vector copy constructor called" RESET << std::endl;
 	this->_size = 0;
 	this->_capacity = 0;
 	*this = ref;
@@ -73,7 +73,7 @@ vector<T, Alloc>::vector(vector const &ref)
 template <class T, class Alloc> vector<T, Alloc>
 &vector<T, Alloc>::operator=(vector<T, Alloc> const &ref)
 {
-	std::cout << GREEN "Vector copy assignment operator called" RESET << std::endl;
+	// std::cout << GREEN "Vector copy assignment operator called" RESET << std::endl;
 	if (this->_capacity)
 	{
 		for (size_t i = 0; i < this->_size; ++i)
@@ -96,7 +96,7 @@ template <class T, class Alloc> vector<T, Alloc>
 template <class T, class Alloc>
 vector<T, Alloc>::~vector(void)
 {
-	std::cout << RED "Vector Destructor called" RESET << std::endl;
+	// std::cout << RED "Vector Destructor called" RESET << std::endl;
 	if (this->_capacity > 0)
 	{
 		for (size_t i = 0; i < this->_size; ++i)
