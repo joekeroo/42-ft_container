@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 14:08:18 by jhii              #+#    #+#             */
-/*   Updated: 2023/01/02 15:15:58 by jhii             ###   ########.fr       */
+/*   Updated: 2023/01/03 18:21:59 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	testStack(void)
 {
-	testStackAll();
+	// testStackAll();
 }
 
 void	testStackAll(void)
