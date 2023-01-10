@@ -10,7 +10,7 @@ OBJ_PATH = obj
 ANNOYING = .vscode
 
 MAIN = main.cpp
-SRC = testVector.cpp testStack.cpp
+SRC = testVector.cpp testStack.cpp testRBT.cpp
 OBJ = ${addprefix ${OBJ_PATH}/, ${SRC:.cpp=.o}}
 
 all: ${NAME}
