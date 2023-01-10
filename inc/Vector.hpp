@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:25:17 by jhii              #+#    #+#             */
-/*   Updated: 2022/12/23 17:29:49 by jhii             ###   ########.fr       */
+/*   Updated: 2023/01/10 17:31:01 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ namespace	ft
 			{ virtual const char	*what(void) const throw(); };
 	};
 
-	template <class T, class Alloc>
-	void	swap(vector<T, Alloc> &, vector<T, Alloc> &);
+	// template <class T, class Alloc>
+	// void	swap(vector<T, Alloc> &, vector<T, Alloc> &);
 
 	template <class T, class Alloc>
 	bool	operator==(vector<T, Alloc> const &a, vector<T, Alloc> const &b)
