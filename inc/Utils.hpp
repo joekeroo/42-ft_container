@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:32:38 by jhii              #+#    #+#             */
-/*   Updated: 2023/01/10 15:11:23 by jhii             ###   ########.fr       */
+/*   Updated: 2023/01/10 17:26:11 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@
 # include <fstream>
 # include <iostream>
 # include "Vector.hpp"
+
+namespace	ft
+{
+	template <class T> void
+	swap(T &a, T &b)
+	{
+		T	c(a);
+		a = b;
+		b = c;
+	};
+}
 
 // ft::vector
 void	testVector(void);
