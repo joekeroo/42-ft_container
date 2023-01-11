@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:48:08 by jhii              #+#    #+#             */
-/*   Updated: 2023/01/10 17:30:59 by jhii             ###   ########.fr       */
+/*   Updated: 2023/01/11 14:23:47 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -509,10 +509,10 @@ vector<T, Alloc>::clear(void)
 		this->pop_back();
 }
 
-// template <class T, class Alloc> void
-// ft::swap(vector<T, Alloc> &a, vector<T, Alloc> &b)
-// {
-// 	a.swap(b);
-// }
+template <class T, class Alloc> void
+ft::swap(vector<T, Alloc> &a, vector<T, Alloc> &b)
+{
+	a.swap(b);
+}
 
 #endif
