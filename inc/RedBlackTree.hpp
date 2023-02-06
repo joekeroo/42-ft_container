@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:11:41 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/05 19:20:45 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/06 15:01:44 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,16 @@ namespace	ft
 	};
 
 
-	template <class T>
+	template <class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
 	class redblacktree
 	{
 		public:
-			typedef T		value_type;
-			typedef node<T>	*node_ptr;
+			typedef T																value_type;
+			typedef node<T>															*node_ptr;
+			typedef typename Alloc::template rebind<ft::node<value_type> >::other	node_allocator;
 
-			redblacktree(void);
+			redblacktree(node_allocator const &alloc = node_allocator());
+			~redblacktree(void);
 
 			void		preorder(void);
 			void		inorder(void);
@@ -62,6 +64,7 @@ namespace	ft
 		private:
 			node_ptr	_root;
 			node_ptr	_TNULL;
+			node_allocator	_alloc;
 
 			void		initializeNullNode(node_ptr node, node_ptr parent);
 			void		preOrderHelper(node_ptr node);
