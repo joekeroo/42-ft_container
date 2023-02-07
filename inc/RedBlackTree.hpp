@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:11:41 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/06 15:01:44 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/07 16:20:21 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ namespace	ft
 			void		printTree(void);
 
 		private:
-			node_ptr	_root;
-			node_ptr	_TNULL;
+			node_ptr		_root;
+			node_ptr		_TNULL;
 			node_allocator	_alloc;
 
 			void		initializeNullNode(node_ptr node, node_ptr parent);
