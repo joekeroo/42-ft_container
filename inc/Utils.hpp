@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:32:38 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/05 19:14:38 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/07 11:57:59 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ void	testStackPop(void);
 void	testStackSwap(void);
 
 // ft::redblacktree
-void	testRBT(void);
+void	testMap(void);
 
 #endif
