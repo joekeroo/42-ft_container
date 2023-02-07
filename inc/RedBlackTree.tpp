@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:08:37 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/07 16:30:12 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/07 16:56:26 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 using namespace ft;
 
-template <class T, class Compare, class Alloc>
-redblacktree<T, Compare, Alloc>::redblacktree(node_allocator const &alloc): _alloc(alloc)
+template <class T, class Alloc>
+redblacktree<T, Alloc>::redblacktree(node_allocator const &alloc): _alloc(alloc)
 {
 	// allocate node here
 	this->_TNULL = this->_alloc.allocate(1);
@@ -26,56 +26,56 @@ redblacktree<T, Compare, Alloc>::redblacktree(node_allocator const &alloc): _all
 	this->_root = this->_TNULL;
 }
 
-template <class T, class Compare, class Alloc>
-redblacktree<T, Compare, Alloc>::~redblacktree(void)
+template <class T, class Alloc>
+redblacktree<T, Alloc>::~redblacktree(void)
 {
 	while (this->_root != this->_TNULL)
 		deleteNode(this->_root->data);
 	this->_alloc.deallocate(this->_TNULL, 1);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::preorder(void)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::preorder(void)
 {
 	preOrderHelper(this->_root);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::inorder(void)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::inorder(void)
 {
 	inOrderHelper(this->_root);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::postorder(void)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::postorder(void)
 {
 	postOrderHelper(this->_root);
 }
 
-template <class T, class Compare, class Alloc> typename redblacktree<T, Compare, Alloc>::node_ptr
-redblacktree<T, Compare, Alloc>::searchTree(value_type key)
+template <class T, class Alloc> typename redblacktree<T, Alloc>::node_ptr
+redblacktree<T, Alloc>::searchTree(value_type key)
 {
 	return (searchTreeHelper(this->_root, key));
 }
 
-template <class T, class Compare, class Alloc> typename redblacktree<T, Compare, Alloc>::node_ptr
-redblacktree<T, Compare, Alloc>::minimum(node_ptr node)
+template <class T, class Alloc> typename redblacktree<T, Alloc>::node_ptr
+redblacktree<T, Alloc>::minimum(node_ptr node)
 {
 	while (node->left != this->_TNULL)
 		node = node->left;
 	return (node);
 }
 
-template <class T, class Compare, class Alloc> typename redblacktree<T, Compare, Alloc>::node_ptr
-redblacktree<T, Compare, Alloc>::maximum(node_ptr node)
+template <class T, class Alloc> typename redblacktree<T, Alloc>::node_ptr
+redblacktree<T, Alloc>::maximum(node_ptr node)
 {
 	while (node->right != this->_TNULL)
 		node = node->right;
 	return (node);
 }
 
-template <class T, class Compare, class Alloc> typename redblacktree<T, Compare, Alloc>::node_ptr
-redblacktree<T, Compare, Alloc>::successor(node_ptr node)
+template <class T, class Alloc> typename redblacktree<T, Alloc>::node_ptr
+redblacktree<T, Alloc>::successor(node_ptr node)
 {
 	if (node->right != this->_TNULL)
 		return (minimum(node->right));
@@ -89,8 +89,8 @@ redblacktree<T, Compare, Alloc>::successor(node_ptr node)
 	return (temp);
 }
 
-template <class T, class Compare, class Alloc> typename redblacktree<T, Compare, Alloc>::node_ptr
-redblacktree<T, Compare, Alloc>::predecessor(node_ptr node)
+template <class T, class Alloc> typename redblacktree<T, Alloc>::node_ptr
+redblacktree<T, Alloc>::predecessor(node_ptr node)
 {
 	if (node->left != this->_TNULL)
 		return (minimum(node->left));
@@ -104,8 +104,8 @@ redblacktree<T, Compare, Alloc>::predecessor(node_ptr node)
 	return (temp);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::leftRotate(node_ptr node)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::leftRotate(node_ptr node)
 {
 	node_ptr temp = node->right;
 	node->right = temp->left;
@@ -122,8 +122,8 @@ void	redblacktree<T, Compare, Alloc>::leftRotate(node_ptr node)
 	node->parent = temp;
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::rightRotate(node_ptr node)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::rightRotate(node_ptr node)
 {
 	node_ptr temp = node->left;
 	node->left = temp->right;
@@ -140,14 +140,14 @@ void	redblacktree<T, Compare, Alloc>::rightRotate(node_ptr node)
 	node->parent = temp;
 }
 
-template <class T, class Compare, class Alloc> typename redblacktree<T, Compare, Alloc>::node_ptr
-redblacktree<T, Compare, Alloc>::getRoot(void)
+template <class T, class Alloc> typename redblacktree<T, Alloc>::node_ptr
+redblacktree<T, Alloc>::getRoot(void)
 {
 	return (this->_root);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::insert(value_type key)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::insert(value_type key)
 {
 	// allocate node here
 	if (searchTree(key)->data == key)
@@ -187,21 +187,21 @@ void	redblacktree<T, Compare, Alloc>::insert(value_type key)
 	insertFix(node);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::deleteNode(value_type data)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::deleteNode(value_type data)
 {
 	deleteNodeHelper(this->_root, data);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::printTree(void)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::printTree(void)
 {
 	if (this->_root)
 		printHelper(this->_root, "", true);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::initializeNullNode(node_ptr node, node_ptr parent)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::initializeNullNode(node_ptr node, node_ptr parent)
 {
 	node->data = 0;
 	node->parent = parent;
@@ -210,8 +210,8 @@ void	redblacktree<T, Compare, Alloc>::initializeNullNode(node_ptr node, node_ptr
 	node->color = black;
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::preOrderHelper(node_ptr node)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::preOrderHelper(node_ptr node)
 {
 	if (node != this->_TNULL)
 	{
@@ -221,8 +221,8 @@ void	redblacktree<T, Compare, Alloc>::preOrderHelper(node_ptr node)
 	}
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::inOrderHelper(node_ptr node)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::inOrderHelper(node_ptr node)
 {
 	if (node != this->_TNULL)
 	{
@@ -232,8 +232,8 @@ void	redblacktree<T, Compare, Alloc>::inOrderHelper(node_ptr node)
 	}
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::postOrderHelper(node_ptr node)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::postOrderHelper(node_ptr node)
 {
 	if (node != this->_TNULL)
 	{
@@ -243,8 +243,8 @@ void	redblacktree<T, Compare, Alloc>::postOrderHelper(node_ptr node)
 	}
 }
 
-template <class T, class Compare, class Alloc> typename redblacktree<T, Compare, Alloc>::node_ptr
-redblacktree<T, Compare, Alloc>::searchTreeHelper(node_ptr node, value_type key)
+template <class T, class Alloc> typename redblacktree<T, Alloc>::node_ptr
+redblacktree<T, Alloc>::searchTreeHelper(node_ptr node, value_type key)
 {
 	if (node == this->_TNULL || key == node->data)
 		return (node);
@@ -253,8 +253,8 @@ redblacktree<T, Compare, Alloc>::searchTreeHelper(node_ptr node, value_type key)
 	return (searchTreeHelper(node->right, key));
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::deleteFix(node_ptr node)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::deleteFix(node_ptr node)
 {
 	node_ptr	temp;
 	while (node != this->_root && node->color == black)
@@ -326,8 +326,8 @@ void	redblacktree<T, Compare, Alloc>::deleteFix(node_ptr node)
 	node->color = black;
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::rbTransplant(node_ptr a, node_ptr b)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::rbTransplant(node_ptr a, node_ptr b)
 {
 	if (a->parent == nullptr)
 		this->_root = b;
@@ -338,8 +338,8 @@ void	redblacktree<T, Compare, Alloc>::rbTransplant(node_ptr a, node_ptr b)
 	b->parent = a->parent;
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::deleteNodeHelper(node_ptr node, value_type key)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::deleteNodeHelper(node_ptr node, value_type key)
 {
 	node_ptr	x, y, z;
 	z = this->_TNULL;
@@ -393,8 +393,8 @@ void	redblacktree<T, Compare, Alloc>::deleteNodeHelper(node_ptr node, value_type
 		deleteFix(x);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::insertFix(node_ptr node)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::insertFix(node_ptr node)
 {
 	node_ptr	temp;
 	while (node->parent->color == red)
@@ -449,8 +449,8 @@ void	redblacktree<T, Compare, Alloc>::insertFix(node_ptr node)
 	this->_root->color = black;
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::printHelper(node_ptr root, std::string indent, bool last)
+template <class T, class Alloc>
+void	redblacktree<T, Alloc>::printHelper(node_ptr root, std::string indent, bool last)
 {
 	if (root != this->_TNULL)
 	{

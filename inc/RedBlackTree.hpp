@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:11:41 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/07 16:20:21 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/07 16:56:02 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ namespace	ft
 	};
 
 
-	template <class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
+	template <class T, class Alloc = std::allocator<T> >
 	class redblacktree
 	{
 		public:
