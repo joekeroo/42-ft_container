@@ -22,6 +22,9 @@ ${OBJ_PATH}/%.o: ${SRC_PATH}/%.cpp
 	@mkdir -p ${@D}
 	@${CXX} ${CXXFLAGS} ${INCLUDES} -c $< -o $@
 
+test: fclean all
+	./ft_container
+
 clean:
 	@${RM} ${ANNOYING}
 	@${RM} ${OBJ_PATH}
