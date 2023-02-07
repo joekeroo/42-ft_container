@@ -25,6 +25,9 @@ ${OBJ_PATH}/%.o: ${SRC_PATH}/%.cpp
 test: fclean all
 	./ft_container
 
+leaks: fclean all
+	./ft_container leaks
+
 clean:
 	@${RM} ${ANNOYING}
 	@${RM} ${OBJ_PATH}

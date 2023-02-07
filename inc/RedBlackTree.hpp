@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:11:41 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/07 16:56:02 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/07 20:13:27 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define REDBLACKTREE_HPP
 
 # include "Utils.hpp"
-# include "Pair.hpp"
 
 enum	color
 {
@@ -34,17 +33,20 @@ namespace	ft
 		int		color;
 	};
 
-
-	template <class T, class Alloc = std::allocator<T> >
+	template <class T, class Compare = std::less<T>, class Alloc = std::allocator<T> >
 	class redblacktree
 	{
 		public:
 			typedef T																value_type;
 			typedef node<T>															*node_ptr;
+			typedef Compare															value_compare;
 			typedef typename Alloc::template rebind<ft::node<value_type> >::other	node_allocator;
 
-			redblacktree(node_allocator const &alloc = node_allocator());
+			redblacktree(node_allocator const &alloc = node_allocator(), value_compare const &comp = value_compare());
+			redblacktree(redblacktree const &ref);
 			~redblacktree(void);
+
+			redblacktree	&operator=(redblacktree const &ref);
 
 			void		preorder(void);
 			void		inorder(void);
@@ -60,11 +62,14 @@ namespace	ft
 			void		insert(value_type key);
 			void		deleteNode(value_type data);
 			void		printTree(void);
+			size_t		size(void);
 
 		private:
+			size_t			_size;
 			node_ptr		_root;
 			node_ptr		_TNULL;
 			node_allocator	_alloc;
+			value_compare	_compare;
 
 			void		initializeNullNode(node_ptr node, node_ptr parent);
 			void		preOrderHelper(node_ptr node);
@@ -77,6 +82,9 @@ namespace	ft
 			void		deleteNodeHelper(node_ptr node, value_type key);
 			void		insertFix(node_ptr	node);
 			void		printHelper(node_ptr root, std::string indent, bool last);
+
+			void		duplicateTree(redblacktree const &ref, node_ptr copy);
+			void		insertPrimal(value_type key, int color);
 	};
 }
 
