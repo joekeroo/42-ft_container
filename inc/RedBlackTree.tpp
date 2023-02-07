@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:08:37 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/06 15:41:53 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/07 16:30:12 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,8 @@ template <class T, class Compare, class Alloc>
 void	redblacktree<T, Compare, Alloc>::insert(value_type key)
 {
 	// allocate node here
+	if (searchTree(key)->data == key)
+		return ;
 	node_ptr	node = this->_alloc.allocate(1);
 	node->parent = nullptr;
 	node->data = key;
