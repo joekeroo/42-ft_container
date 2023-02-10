@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:52:21 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/05 19:18:04 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/10 12:49:25 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,14 @@ namespace	ft
 	template <class T1, class T2>
 	pair<T1, T2>	make_pair(T1 x, T2 y)
 	{ return (pair<T1, T2>(x, y)); }
+
+	template <class T1, class T2>
+	std::ostream	&operator<<(std::ostream &output, pair<T1, T2> &ref)
+	{
+		output << "[" << ref.first;
+		output << ", " << ref.second << "]";
+		return (output);
+	}
 }
 
 # include "Pair.tpp"
