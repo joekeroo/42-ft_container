@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:08:37 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/10 13:08:19 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/10 15:49:37 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -510,7 +510,7 @@ void	redblacktree<T, Compare, Alloc>::duplicateTree(redblacktree const &rbt, nod
 	if (copy != rbt._TNULL)
 	{
 		this->_size++;
-		this->insertPrimal(copy->data, copy->color);
+		this->insertPrimal(*copy->data, copy->color);
 		duplicateTree(rbt, copy->left);
 		duplicateTree(rbt, copy->right);
 	}
