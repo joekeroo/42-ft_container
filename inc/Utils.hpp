@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:32:38 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/07 12:00:57 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/14 22:07:03 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,17 @@ namespace	ft
 		a = b;
 		b = c;
 	}
+
+	template <class T>
+	struct	node
+	{
+		T		*data;
+		node	*parent;
+		node	*left;
+		node	*right;
+		int		color;
+		bool	isSentinel;
+	};
 }
 
 // ft::vector
