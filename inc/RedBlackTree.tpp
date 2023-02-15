@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:08:37 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/15 18:09:37 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/15 20:47:04 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -684,32 +684,18 @@ template <class T, class Compare, class Alloc>
 typename redblacktree<T, Compare, Alloc>::iterator
 redblacktree<T, Compare, Alloc>::insert(iterator it, value_type const &key)
 {
+	(void)it;
 	insertNode(key);
 	return (find(key));
 }
 
 template <class T, class Compare, class Alloc>
-ft::pair<typename redblacktree<T, Compare, Alloc>::iterator, bool>
-redblacktree<T, Compare, Alloc>::insert(value_type const &key)
-{
-	if (searchTree(key) == this->_TNULL)
-	{
-		insertNode(key);
-		ft::pair<iterator, bool> temp(find(key), true);
-		return (temp);
-	}
-	else
-	{
-		insertNode(key);
-		ft::pair<iterator, bool> temp(find(key), false);
-		return (temp);
-	}
-}
-
-template <class T, class Compare, class Alloc>
 template <class InputIterator> void
 redblacktree<T, Compare, Alloc>::insert(InputIterator first, InputIterator last)
-{}
+{
+	for (InputIterator it = first; it != last; ++it)
+		insert(*it);
+}
 
 template <class T, class Compare, class Alloc>
 void	redblacktree<T, Compare, Alloc>::erase(iterator it)
@@ -728,7 +714,10 @@ redblacktree<T, Compare, Alloc>::erase(value_type const &key)
 
 template <class T, class Compare, class Alloc>
 void	redblacktree<T, Compare, Alloc>::erase(iterator first, iterator last)
-{}
+{
+	while (first != last)
+		eraseNode(*first++);
+}
 
 template <class T, class Compare, class Alloc>
 bool	redblacktree<T, Compare, Alloc>::empty(void)
