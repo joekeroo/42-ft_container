@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 20:06:09 by jhii              #+#    #+#             */
-/*   Updated: 2022/12/20 18:02:01 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/15 15:45:35 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,14 @@ namespace	ft
 			reverse_iterator	&operator[](int);
 			reference			operator*(void);
 			pointer				operator->(void);
+			bool				operator==(reverse_iterator const &);
+			bool				operator!=(reverse_iterator const &);
 			iterator_type		base(void) const;
 
 		private:
 			iterator_type	_base;
 	};
 
-	template <class T> bool
-	operator==(reverse_iterator<T> const &, reverse_iterator<T> const &);
-	template <class T> bool
-	operator!=(reverse_iterator<T> const &, reverse_iterator<T> const &);
 	template <class T> bool
 	operator<=(reverse_iterator<T> const &, reverse_iterator<T> const &);
 	template <class T> bool
