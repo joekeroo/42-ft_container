@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:52:21 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/10 12:49:25 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/15 16:26:00 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@ namespace	ft
 		second_type	second;
 	};
 
+	// compare only key
 	template <class T1, class T2>
 	bool	operator==(pair<T1, T2> const &lhs, pair<T1, T2> const &rhs)
-	{ return (lhs.first == rhs.first && lhs.second == rhs.second); }
+	{ return (lhs.first == rhs.first); }
 
 	template <class T1, class T2>
 	bool	operator!=(pair<T1, T2> const &lhs, pair<T1, T2> const &rhs)
