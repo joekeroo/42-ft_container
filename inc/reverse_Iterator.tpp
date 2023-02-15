@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 20:16:19 by jhii              #+#    #+#             */
-/*   Updated: 2022/12/20 18:02:10 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/15 12:47:45 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ reverse_iterator<T>::operator*(void)
 template <class T> typename reverse_iterator<T>::pointer
 reverse_iterator<T>::operator->(void)
 {
-	return (this->_base);
+	return (&(operator*()));
 }
 
 template <class Iter> typename reverse_iterator<Iter>::iterator_type
