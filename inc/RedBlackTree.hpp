@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:11:41 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/16 13:58:11 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/16 18:53:27 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,13 @@ namespace	ft
 			reverse_iterator			rend(void);
 			const_reverse_iterator		rend(void) const;
 
+			bool						empty(void) const;
+			size_type					size(void) const;
+			size_type					max_size(void) const;
+
+			value_type					&operator[](value_type const &key);
+			value_type					&at(value_type const &key);
+
 			template <class InputIterator>
 			void						insert(InputIterator first, InputIterator last);
 			iterator					insert(iterator it, value_type const &key);
@@ -78,15 +85,10 @@ namespace	ft
 			void						erase(iterator it);
 			size_type					erase(value_type const &key);
 			void						erase(iterator first, iterator last);
-			bool						empty(void);
-			size_type					size(void);
-			size_type					max_size(void) const;
-
-			value_type					&operator[](value_type const &key);
-			value_type					&at(value_type const &key);
-
 			void						swap(redblacktree &ref);
 			void						clear(void);
+
+			value_compare								value_comp(void) const;
 
 			iterator									find(value_type const &key);
 			const_iterator								find(value_type const &key) const;

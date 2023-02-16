@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:08:37 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/15 20:47:04 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/16 18:53:59 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -720,7 +720,7 @@ void	redblacktree<T, Compare, Alloc>::erase(iterator first, iterator last)
 }
 
 template <class T, class Compare, class Alloc>
-bool	redblacktree<T, Compare, Alloc>::empty(void)
+bool	redblacktree<T, Compare, Alloc>::empty(void) const
 {
 	if (this->_size)
 		return (true);
@@ -728,7 +728,7 @@ bool	redblacktree<T, Compare, Alloc>::empty(void)
 }
 
 template <class T, class Compare, class Alloc>
-size_t	redblacktree<T, Compare, Alloc>::size(void)
+size_t	redblacktree<T, Compare, Alloc>::size(void) const
 {
 	return (this->_size);
 }
@@ -770,6 +770,13 @@ void	redblacktree<T, Compare, Alloc>::clear(void)
 {
 	while (this->_root != this->_TNULL)
 		eraseNode(*this->_root->data);
+}
+
+template <class T, class Compare, class Alloc>
+typename redblacktree<T, Compare, Alloc>::value_compare
+redblacktree<T, Compare, Alloc>::value_comp(void) const
+{
+	return (this->_compare);
 }
 
 template <class T, class Compare, class Alloc>
