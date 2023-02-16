@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:11:41 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/15 20:45:18 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/16 13:58:11 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define REDBLACKTREE_HPP
 
 # include "Pair.hpp"
-# include "RBT_Iterator.hpp"
 # include "reverse_Iterator.hpp"
+# include "Bidirectional_Iterator.hpp"
 
 enum	color
 {
@@ -34,9 +34,9 @@ namespace	ft
 			typedef Compare															value_compare;
 			typedef Alloc															allocator_type;
 			typedef size_t															size_type;
-			typedef rbt_iterator<value_type>										iterator;
-			typedef rbt_iterator<const value_type>									const_iterator;
-			typedef reverse_iterator<iterator>										reverse_iterator;
+			typedef ft::bidirectional_iterator<value_type>							iterator;
+			typedef ft::bidirectional_iterator<const value_type>					const_iterator;
+			typedef ft::reverse_iterator<iterator>									reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>							const_reverse_iterator;
 			typedef typename Alloc::template rebind<ft::node<value_type> >::other	node_allocator;
 
