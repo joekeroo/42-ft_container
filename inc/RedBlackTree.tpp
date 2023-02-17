@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:08:37 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/16 18:53:59 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/17 15:29:16 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -723,8 +723,8 @@ template <class T, class Compare, class Alloc>
 bool	redblacktree<T, Compare, Alloc>::empty(void) const
 {
 	if (this->_size)
-		return (true);
-	return (false);
+		return (false);
+	return (true);
 }
 
 template <class T, class Compare, class Alloc>
