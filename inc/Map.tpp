@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:49:39 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/16 19:23:04 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/17 17:08:31 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,28 @@ using namespace ft;
 template <class Key, class T, class Compare, class Alloc>
 map<Key, T, Compare, Alloc>::map(key_compare const &comp, allocator_type const &alloc): _comp(comp), _alloc(alloc), _rbt(alloc, comp)
 {
-	std::cout << GREEN "Map constructor called" RESET << std::endl;
+	// std::cout << GREEN "Map constructor called" RESET << std::endl;
 }
 
 template <class Key, class T, class Compare, class Alloc>
-map<Key, T, Compare, Alloc>::map(map const &ref)
+map<Key, T, Compare, Alloc>::map(map const &ref): _rbt(this->_alloc, this->_comp)
 {
-	std::cout << GREEN "Map copy constructor called" RESET << std::endl;
+	// std::cout << GREEN "Map copy constructor called" RESET << std::endl;
 	this->_rbt = ref._rbt;
 }
 
 template <class Key, class T, class Compare, class Alloc> map<Key, T, Compare, Alloc>
 &map<Key, T, Compare, Alloc>::operator=(map const &ref)
 {
-	std::cout << GREEN "Map copy assignment operator called" RESET << std::endl;
+	// std::cout << GREEN "Map copy assignment operator called" RESET << std::endl;
 	this->_rbt = ref._rbt;
+	return (*this);
 }
 
 template <class Key, class T, class Compare, class Alloc>
 map<Key, T, Compare, Alloc>::~map(void)
 {
-	std::cout << RED "Map destructor called" RESET << std::endl;
+	// std::cout << RED "Map destructor called" RESET << std::endl;
 }
 
 template <class Key, class T, class Compare, class Alloc>

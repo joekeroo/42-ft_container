@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:48:42 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/16 19:23:54 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/17 17:13:27 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ namespace	ft
 			typedef Compare										key_compare;
 			typedef ft::pair<const Key, T>						value_type;
 
-			class	value_compare: std::binary_function<T, T, bool>
+			class	value_compare: public std::binary_function<T, T, bool>
 			{
 				protected:
 					key_compare	comp;
@@ -102,6 +102,8 @@ namespace	ft
 		private:
 			key_compare												_comp;
 			allocator_type											_alloc;
+
+		public:
 			redblacktree<value_type, value_compare, allocator_type>	_rbt;
 	};
 }
