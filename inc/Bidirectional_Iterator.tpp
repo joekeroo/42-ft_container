@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:23:50 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/16 13:56:57 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 15:13:26 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ template <class T> bidirectional_iterator<T>
 {
 	if (this->ptr->isSentinel == true)
 	{
-		this->ptr = this->ptr->left;
+		if (this->ptr->left != nullptr)
+			this->ptr = this->ptr->left;
 		return (*this);
 	}
 	if (this->ptr->right->isSentinel == true)
@@ -101,7 +102,8 @@ template <class T> bidirectional_iterator<T>
 {
 	if (this->ptr->isSentinel == true)
 	{
-		this->ptr = this->ptr->right;
+		if (this->ptr->right != nullptr)
+			this->ptr = this->ptr->right;
 		return (*this);
 	}
 	if (this->ptr->left->isSentinel == true)
