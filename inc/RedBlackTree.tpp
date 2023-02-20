@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:08:37 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/17 15:29:16 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 16:36:27 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,16 +285,6 @@ void	redblacktree<T, Compare, Alloc>::insertNode(value_type const &key)
 		if (node->parent->parent == nullptr)
 			return ;
 		insertFix(node);
-	}
-	else
-	{
-		node_ptr	node;
-
-		node = searchTree(key);
-		this->_allocPair.destroy(node->data);
-		this->_allocPair.deallocate(node->data, 1);
-		node->data = this->_allocPair.allocate(1);
-		this->_allocPair.construct(node->data, key);
 	}
 }
 
@@ -610,14 +600,20 @@ template <class T, class Compare, class Alloc>
 typename redblacktree<T, Compare, Alloc>::iterator
 redblacktree<T, Compare, Alloc>::begin(void)
 {
-	return (iterator(this->_TNULL->left));
+	if (this->_size == 0)
+		return (iterator(this->_TNULL));
+	else
+		return (iterator(this->_TNULL->left));
 }
 
 template <class T, class Compare, class Alloc>
 typename redblacktree<T, Compare, Alloc>::const_iterator
 redblacktree<T, Compare, Alloc>::begin(void) const
 {
-	return (const_iterator(this->_TNULL->left));
+	if (this->_size == 0)
+		return (const_iterator(this->_TNULL));
+	else
+		return (const_iterator(this->_TNULL->left));
 }
 
 template <class T, class Compare, class Alloc>
@@ -652,14 +648,20 @@ template <class T, class Compare, class Alloc>
 typename redblacktree<T, Compare, Alloc>::reverse_iterator
 redblacktree<T, Compare, Alloc>::rend(void)
 {
-	return (reverse_iterator(this->_TNULL->left));
+	if (this->_size == 0)
+		return (reverse_iterator(this->_TNULL));
+	else
+		return (reverse_iterator(this->_TNULL->left));
 }
 
 template <class T, class Compare, class Alloc>
 typename redblacktree<T, Compare, Alloc>::const_reverse_iterator
 redblacktree<T, Compare, Alloc>::rend(void) const
 {
-	return (const_reverse_iterator(this->_TNULL->left));
+	if (this->_size == 0)
+		return (const_reverse_iterator(this->_TNULL));
+	else
+		return (const_reverse_iterator(this->_TNULL->left));
 }
 
 template <class T, class Compare, class Alloc>
@@ -708,8 +710,9 @@ template <class T, class Compare, class Alloc>
 typename redblacktree<T, Compare, Alloc>::size_type
 redblacktree<T, Compare, Alloc>::erase(value_type const &key)
 {
+	size_type	temp = this->_size;
 	eraseNode(key);
-	return (this->_size);
+	return (temp != this->_size);
 }
 
 template <class T, class Compare, class Alloc>
@@ -736,7 +739,7 @@ size_t	redblacktree<T, Compare, Alloc>::size(void) const
 template <class T, class Compare, class Alloc>
 size_t	redblacktree<T, Compare, Alloc>::max_size(void) const
 {
-	return (this->_allocNode.max_size());
+	return ((std::numeric_limits<size_type>::max() / sizeof(value_type)) / 2);
 }
 
 template <class T, class Compare, class Alloc>
@@ -807,9 +810,12 @@ template <class T, class Compare, class Alloc>
 typename redblacktree<T, Compare, Alloc>::size_type
 redblacktree<T, Compare, Alloc>::count(value_type const &key) const
 {
-	if (searchTree(key) == this->_TNULL)
-		return (0);
-	return (1);
+	for (const_iterator it = begin(); it != end(); ++it)
+	{
+		if (key == *it)
+			return (1);
+	}
+	return (0);
 }
 
 template <class T, class Compare, class Alloc>

@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:48:42 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/17 17:13:27 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/17 18:35:11 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,22 +56,22 @@ namespace	ft
 
 			map	&operator=(map const &ref);
 
-			iterator				begin(void);
-			const_iterator			begin(void) const;
-			iterator				end(void);
-			const_iterator			end(void) const;
+			iterator					begin(void);
+			const_iterator				begin(void) const;
+			iterator					end(void);
+			const_iterator				end(void) const;
 
-			reverse_iterator		rbegin(void);
-			const_reverse_iterator	rbegin(void) const;
-			reverse_iterator		rend(void);
-			const_reverse_iterator	rend(void) const;
+			reverse_iterator			rbegin(void);
+			const_reverse_iterator		rbegin(void) const;
+			reverse_iterator			rend(void);
+			const_reverse_iterator		rend(void) const;
 
-			bool					empty(void) const;
-			size_type				size(void) const;
-			size_type				max_size(void) const;
+			bool						empty(void) const;
+			size_type					size(void) const;
+			size_type					max_size(void) const;
 
-			mapped_type				&operator[](key_type const &key);
-			mapped_type				&at(key_type const &key);
+			mapped_type					&operator[](key_type const &key);
+			mapped_type					&at(key_type const &key);
 
 			template <class InputIterator>
 			void						insert(InputIterator first, InputIterator last);
@@ -83,8 +83,8 @@ namespace	ft
 			void						swap(map &ref);
 			void						clear(void);
 
-			key_compare				key_comp(void) const;
-			value_compare			value_comp(void) const;
+			key_compare					key_comp(void) const;
+			value_compare				value_comp(void) const;
 
 			iterator									find(key_type const &key);
 			const_iterator								find(key_type const &key) const;
@@ -96,12 +96,12 @@ namespace	ft
 			ft::pair<iterator, iterator>				equal_range(key_type const &key);
 			ft::pair<const_iterator, const_iterator>	equal_range(key_type const &key) const;
 
-			allocator_type			get_allocator(void) const;
-			void					printTree(void);
+			allocator_type				get_allocator(void) const;
+			void						printTree(void);
 		
 		private:
-			key_compare												_comp;
-			allocator_type											_alloc;
+			key_compare					_comp;
+			allocator_type				_alloc;
 
 		public:
 			redblacktree<value_type, value_compare, allocator_type>	_rbt;

@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:42:05 by jhii              #+#    #+#             */
-/*   Updated: 2022/12/23 17:30:14 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 16:41:43 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ void	testVectorAll(void)
 
 void	testVectorConstructor(void)
 {
-	// std::vector<int> v1;
-	// std::vector<int> v2 (4,100);
-	// std::vector<int> v3 (v2.begin(),v2.end());
-	// std::vector<int> v4 (v3);
+	std::vector<int> v1;
+	std::vector<int> v2 (4,100);
+	std::vector<int> v3 (v2.begin(),v2.end());
+	std::vector<int> v4 (v3);
 
-	// int	int1[] = {16, 2, 77, 29};
-	// std::vector<int> v5 (int1, int1 + sizeof(int1) / sizeof(int));
+	int	int1[] = {16, 2, 77, 29};
+	std::vector<int> v5 (int1, int1 + sizeof(int1) / sizeof(int));
 
-	// std::cout << CYAN "v5.data()     :";
-	// for (size_t i = 0; i < v5.size(); i++)
-	// 	std::cout << ' ' << v5[i];
-	// std::cout << std::endl;
-	// std::cout << "v5.size()     : " << v5.size() << std::endl;
-	// std::cout << "v5.capacity() : " << v5.capacity() << std::endl;
-	// std::cout << RESET << std::endl;
+	std::cout << CYAN "v5.data()     :";
+	for (size_t i = 0; i < v5.size(); i++)
+		std::cout << ' ' << v5[i];
+	std::cout << std::endl;
+	std::cout << "v5.size()     : " << v5.size() << std::endl;
+	std::cout << "v5.capacity() : " << v5.capacity() << std::endl;
+	std::cout << RESET << std::endl;
 
 	ft::vector<int> v6;
 	ft::vector<int> v7(4,100);
@@ -163,45 +163,45 @@ void	testVectorData(void)
 
 void	testVectorAssign(void)
 {
-	// std::vector<int>	v1;
-	// std::vector<int>	v2;
-	// std::vector<int>	v3;
+	std::vector<int>	v1;
+	std::vector<int>	v2;
+	std::vector<int>	v3;
 	ft::vector<int>		v4;
 	ft::vector<int>		v5;
 	ft::vector<int>		v6;
 
-	// v1.assign(7, 100);
+	v1.assign(7, 100);
 
-	// std::vector<int>::iterator it1;
-	// it1 = v1.begin() + 1;
-	// v2.assign(it1, v1.end() - 1);
+	std::vector<int>::iterator it1;
+	it1 = v1.begin() + 1;
+	v2.assign(it1, v1.end() - 1);
 
-	// int myint1[] = {1776, 7, 4};
-	// v3.assign(myint1, myint1 + 3);
+	int myint1[] = {1776, 7, 4};
+	v3.assign(myint1, myint1 + 3);
 
-	// std::cout << CYAN "v1.data()     :";
-	// for (unsigned i=0; i < v1.size(); ++i)
-	// 	std::cout << ' ' << v1[i];
-	// std::cout << std::endl;
-	// std::cout << "v1.size()     : " << v1.size() << std::endl;
-	// std::cout << "v1.capacity() : " << v1.capacity() << std::endl;
-	// std::cout << RESET << std::endl;
+	std::cout << CYAN "v1.data()     :";
+	for (unsigned i=0; i < v1.size(); ++i)
+		std::cout << ' ' << v1[i];
+	std::cout << std::endl;
+	std::cout << "v1.size()     : " << v1.size() << std::endl;
+	std::cout << "v1.capacity() : " << v1.capacity() << std::endl;
+	std::cout << RESET << std::endl;
 
-	// std::cout << CYAN "v2.data()     :";
-	// for (unsigned i=0; i < v2.size(); ++i)
-	// 	std::cout << ' ' << v2[i];
-	// std::cout << std::endl;
-	// std::cout << "v2.size()     : " << v2.size() << std::endl;
-	// std::cout << "v2.capacity() : " << v2.capacity() << std::endl;
-	// std::cout << RESET << std::endl;
+	std::cout << CYAN "v2.data()     :";
+	for (unsigned i=0; i < v2.size(); ++i)
+		std::cout << ' ' << v2[i];
+	std::cout << std::endl;
+	std::cout << "v2.size()     : " << v2.size() << std::endl;
+	std::cout << "v2.capacity() : " << v2.capacity() << std::endl;
+	std::cout << RESET << std::endl;
 
-	// std::cout << CYAN "v3.data()     :";
-	// for (unsigned i=0; i < v3.size(); ++i)
-	// 	std::cout << ' ' << v3[i];
-	// std::cout << std::endl;
-	// std::cout << "v3.size()     : " << v3.size() << std::endl;
-	// std::cout << "v3.capacity() : " << v3.capacity() << std::endl;
-	// std::cout << RESET << std::endl;
+	std::cout << CYAN "v3.data()     :";
+	for (unsigned i=0; i < v3.size(); ++i)
+		std::cout << ' ' << v3[i];
+	std::cout << std::endl;
+	std::cout << "v3.size()     : " << v3.size() << std::endl;
+	std::cout << "v3.capacity() : " << v3.capacity() << std::endl;
+	std::cout << RESET << std::endl;
 
 	v4.assign(7, 100);
 
@@ -360,7 +360,7 @@ void	testVectorSwap(void)
 	std::cout << RESET << std::endl;
 
 	v3.push_back(50);
-	// ft::swap(v3, v4);
+	ft::swap(v3, v4);
 	v3.swap(v4);
 
 	std::cout << BLUE "v3.data()     :";
@@ -486,28 +486,28 @@ void	testVectorErase(void)
 
 void	testVectorInsert(void)
 {
-	// std::vector<int>			v1(3, 100);
-	// std::vector<int>::iterator	it1;
+	std::vector<int>			v1(3, 100);
+	std::vector<int>::iterator	it1;
 	ft::vector<int>				v2(3, 100);
 	ft::vector<int>::iterator	it2;
 
-	// it1 = v1.begin();
-	// it1 = v1.insert(it1, 200);
-	// v1.insert(it1, 2, 300);
+	it1 = v1.begin();
+	it1 = v1.insert(it1, 200);
+	v1.insert(it1, 2, 300);
 
-	// std::vector<int> tempVector1(2, 400);
-	// v1.insert(v1.begin() + 2, tempVector1.begin(), tempVector1.end());
+	std::vector<int> tempVector1(2, 400);
+	v1.insert(v1.begin() + 2, tempVector1.begin(), tempVector1.end());
 
-	// int	arr1[] = {501, 502, 503};
-	// v1.insert(v1.begin(), arr1, arr1 + 3);
+	int	arr1[] = {501, 502, 503};
+	v1.insert(v1.begin(), arr1, arr1 + 3);
 
-	// std::cout << CYAN "v1.data()     :";
-	// for (size_t i = 0; i < v1.size(); i++)
-	// 	std::cout << ' ' << v1[i];
-	// std::cout << std::endl;
-	// std::cout << "v1.size()     : " << v1.size() << std::endl;
-	// std::cout << "v1.capacity() : " << v1.capacity() << std::endl;
-	// std::cout << RESET << std::endl;
+	std::cout << CYAN "v1.data()     :";
+	for (size_t i = 0; i < v1.size(); i++)
+		std::cout << ' ' << v1[i];
+	std::cout << std::endl;
+	std::cout << "v1.size()     : " << v1.size() << std::endl;
+	std::cout << "v1.capacity() : " << v1.capacity() << std::endl;
+	std::cout << RESET << std::endl;
 
 	it2 = v2.begin();
 	it2 = v2.insert(it2, 200);

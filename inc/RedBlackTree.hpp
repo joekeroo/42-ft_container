@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:11:41 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/16 18:53:27 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 16:36:55 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ namespace	ft
 			typedef Alloc															allocator_type;
 			typedef size_t															size_type;
 			typedef ft::bidirectional_iterator<value_type>							iterator;
-			typedef ft::bidirectional_iterator<const value_type>					const_iterator;
+			typedef ft::bidirectional_iterator<value_type>							const_iterator;
 			typedef ft::reverse_iterator<iterator>									reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>							const_reverse_iterator;
 			typedef typename Alloc::template rebind<ft::node<value_type> >::other	node_allocator;

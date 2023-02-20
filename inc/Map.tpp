@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:49:39 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/17 17:08:31 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 16:29:46 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ template <class Key, class T, class Compare, class Alloc>
 typename map<Key, T, Compare, Alloc>::size_type
 map<Key, T, Compare, Alloc>::max_size(void) const
 {
-	return (this->_rbt.max_size() + this->_alloc.max_size());
+	return (this->_rbt.max_size());
 }
 
 template <class Key, class T, class Compare, class Alloc>
@@ -264,7 +264,7 @@ ft::pair<typename map<Key, T, Compare, Alloc>::iterator, typename map<Key, T, Co
 map<Key, T, Compare, Alloc>::equal_range(key_type const &key)
 {
 	ft::pair<const key_type, mapped_type> temp = ft::make_pair(key, mapped_type());
-	return (this->equal_range(temp));
+	return (this->_rbt.equal_range(temp));
 }
 
 template <class Key, class T, class Compare, class Alloc>
