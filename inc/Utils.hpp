@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:32:38 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/14 22:07:03 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 16:02:48 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,19 @@ void	testStackSwap(void);
 // ft::Maps and ft::redblacktree
 void	testRBT(void);
 void	testMap(void);
+void	testMapInsertAndErase(void);
+void	testMapEqualRange(void);
+void	testMapBound(void);
+void	testMapCount(void);
+void	testMapFind(void);
+void	testMapValueComp(void);
+void	testMapKeyComp(void);
+void	testMapClear(void);
+void	testMapSwap(void);
+void	testMapAt(void);
+void	testMapOperator(void);
+void	testMapEmpty(void);
+void	testMapSize(void);
+void	testMapIterator(void);
 
 #endif
