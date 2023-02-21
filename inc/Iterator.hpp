@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:28:05 by jhii              #+#    #+#             */
-/*   Updated: 2022/12/07 19:37:19 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 18:45:10 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,36 +39,35 @@ namespace	ft
 		randomAccessIterator	operator++(int);
 		randomAccessIterator	operator--(int);
 		randomAccessIterator	&operator[](int);
-		reference				operator*(void);
-		pointer					operator->(void);
+		randomAccessIterator	&operator+=(difference_type);
+		randomAccessIterator	&operator-=(difference_type);
+		randomAccessIterator	operator+(difference_type);
+		randomAccessIterator	operator-(difference_type);
+		reference				operator*(void) const;
+		pointer					operator->(void) const;
+		difference_type			operator-(randomAccessIterator const &);
+		bool					operator==(randomAccessIterator const &);
+		bool					operator!=(randomAccessIterator const &);
+		bool					operator<=(randomAccessIterator const &);
+		bool					operator>=(randomAccessIterator const &);
+		bool					operator<(randomAccessIterator const &);
+		bool					operator>(randomAccessIterator const &);
+
 	};
 
-	template <typename T>
-	bool	operator==(randomAccessIterator<T> const &, randomAccessIterator<T> const &);
-	template <typename T>
-	bool	operator!=(randomAccessIterator<T> const &, randomAccessIterator<T> const &);
-	template <typename T>
-	bool	operator<=(randomAccessIterator<T> const &, randomAccessIterator<T> const &);
-	template <typename T>
-	bool	operator>=(randomAccessIterator<T> const &, randomAccessIterator<T> const &);
-	template <typename T>
-	bool	operator<(randomAccessIterator<T> const &, randomAccessIterator<T> const &);
-	template <typename T>
-	bool	operator>(randomAccessIterator<T> const &, randomAccessIterator<T> const &);
-	template <typename T>
-	randomAccessIterator<T>	operator+=(randomAccessIterator<T> const &, typename randomAccessIterator<T>::difference_type);
-	template <typename T>
-	randomAccessIterator<T>	operator-=(randomAccessIterator<T> const &, typename randomAccessIterator<T>::difference_type);
-	template <typename T>
-	randomAccessIterator<T>	operator+(randomAccessIterator<T> const &, typename randomAccessIterator<T>::difference_type);
-	template <typename T>
-	randomAccessIterator<T>	operator+(typename randomAccessIterator<T>::difference_type, randomAccessIterator<T> const &);
-	template <typename T>
-	randomAccessIterator<T> operator-(randomAccessIterator<T> const &, typename randomAccessIterator<T>::difference_type);
-	template <typename T>
-	randomAccessIterator<T> operator-(typename randomAccessIterator<T>::difference_type, randomAccessIterator<T> const &);
-	template <typename T>
-	typename randomAccessIterator<T>::difference_type operator-(randomAccessIterator<T> const &, randomAccessIterator<T> const &);
+	template <class T>
+	randomAccessIterator<T>	operator+(typename randomAccessIterator<T>::difference_type n, randomAccessIterator<T> const &a)
+	{
+		randomAccessIterator<T> temp = a;
+		return (temp.ptr + n);
+	}
+
+	template <class T>
+	randomAccessIterator<T> operator-(typename randomAccessIterator<T>::difference_type n, randomAccessIterator<T> const &a)
+	{
+		randomAccessIterator<T> temp = a;
+		return (temp.ptr - n);
+	}
 }
 
 # include "Iterator.tpp"

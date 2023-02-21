@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 20:16:19 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/15 16:06:40 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 18:53:22 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,13 +115,13 @@ template <class T> reverse_iterator<T>
 }
 
 template <class T> typename reverse_iterator<T>::reference
-reverse_iterator<T>::operator*(void)
+reverse_iterator<T>::operator*(void) const
 {
 	return (*this->_base);
 }
 
 template <class T> typename reverse_iterator<T>::pointer
-reverse_iterator<T>::operator->(void)
+reverse_iterator<T>::operator->(void) const
 {
 	return (&(operator*()));
 }
@@ -145,50 +145,27 @@ reverse_iterator<Iter>::base(void) const
 }
 
 template <class T> bool
-operator<=(reverse_iterator<T> const &a, reverse_iterator<T> const &b)
+reverse_iterator<T>::operator<=(reverse_iterator<T> const &ref)
 {
-	return (a.base() <= b.base());
+	return (this->base() <= ref.base());
 }
 
 template <class T> bool
-operator>=(reverse_iterator<T> const &a, reverse_iterator<T> const &b)
+reverse_iterator<T>::operator>=(reverse_iterator<T> const &ref)
 {
-	return (a.base() >= b.base());
+	return (this->base() >= ref.base());
 }
 
 template <class T> bool
-operator<(reverse_iterator<T> const &a, reverse_iterator<T> const &b)
+reverse_iterator<T>::operator<(reverse_iterator<T> const &ref)
 {
-	return (a.base() < b.base());
+	return (this->base() < ref.base());
 }
 
 template <class T> bool
-operator>(reverse_iterator<T> const &a, reverse_iterator<T> const &b)
+reverse_iterator<T>::operator>(reverse_iterator<T> const &ref)
 {
-	return (a.base() > b.base());
-}
-
-template <class T> reverse_iterator<T>
-operator+(typename reverse_iterator<T>::difference_type n, reverse_iterator<T> const &ref)
-{
-	return (ref + n);
-}
-
-template <class T> reverse_iterator<T>
-operator-(typename reverse_iterator<T>::difference_type n, reverse_iterator<T> const &ref)
-{
-	return (ref - n);
-}
-
-template <class T> typename reverse_iterator<T>::difference_type
-operator-(reverse_iterator<T> const &a, reverse_iterator<T> const &b)
-{
-	typename reverse_iterator<T>::difference_type	temp;
-	if (a.base() > b.base())
-		temp = a.base() - b.base();
-	else
-		temp = b.base() - a.base();
-	return (temp);
+	return (this->base() > ref.base());
 }
 
 #endif

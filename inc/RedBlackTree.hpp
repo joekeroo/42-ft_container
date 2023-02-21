@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:11:41 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/20 16:36:55 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/21 15:23:16 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ namespace	ft
 			typedef Alloc															allocator_type;
 			typedef size_t															size_type;
 			typedef ft::bidirectional_iterator<value_type>							iterator;
-			typedef ft::bidirectional_iterator<value_type>							const_iterator;
+			typedef ft::bidirectional_iterator<const value_type>					const_iterator;
 			typedef ft::reverse_iterator<iterator>									reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>							const_reverse_iterator;
 			typedef typename Alloc::template rebind<ft::node<value_type> >::other	node_allocator;
 
+			template <class InputIterator>
+			redblacktree(InputIterator first, InputIterator last, node_allocator const &alloc = node_allocator(), value_compare const &comp = value_compare());
 			redblacktree(node_allocator const &alloc = node_allocator(), value_compare const &comp = value_compare());
 			redblacktree(redblacktree const &ref);
 			~redblacktree(void);
@@ -102,13 +104,14 @@ namespace	ft
 
 			allocator_type	get_allocator(void) const;
 
-		private:
 			size_type		_size;
 			node_ptr		_root;
 			node_ptr		_TNULL;
 			allocator_type	_allocPair;
 			node_allocator	_allocNode;
 			value_compare	_compare;
+
+		private:
 
 			void		inOrderHelper(node_ptr node);
 			void		preOrderHelper(node_ptr node);
@@ -127,9 +130,6 @@ namespace	ft
 			void		deallocateTree(void);
 			void		duplicateTree(redblacktree const &rbt, node_ptr copy);
 			void		insertPrimal(value_type const &key, int color);
-
-			class	IndexOutOfBoundsException: public std::exception
-			{ virtual const char	*what(void) const throw(); };
 	};
 
 	template <class T, class Compare, class Alloc>

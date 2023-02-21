@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:48:42 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/17 18:35:11 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/21 15:13:46 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ namespace	ft
 			typedef typename allocator_type::pointer				pointer;
 			typedef typename allocator_type::const_pointer			const_pointer;
 
+			template <class InputIterator>
+			map(InputIterator first, InputIterator last, key_compare const &comp = key_compare(), allocator_type const &alloc = allocator_type());
 			explicit	map(key_compare const &comp = key_compare(), allocator_type const &alloc = allocator_type());
 			map(map const &ref);
 			~map(void);
@@ -98,14 +100,39 @@ namespace	ft
 
 			allocator_type				get_allocator(void) const;
 			void						printTree(void);
-		
-		private:
-			key_compare					_comp;
-			allocator_type				_alloc;
 
-		public:
+			key_compare												_comp;
+			allocator_type											_alloc;
 			redblacktree<value_type, value_compare, allocator_type>	_rbt;
 	};
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool	operator==(map<Key, T, Compare, Alloc> const &a, map<Key, T, Compare, Alloc> const &b)
+	{ return (a._rbt.size() == b._rbt.size() && ft::equal(a._rbt.begin(), a._rbt.end(), b._rbt.begin())); }
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool	operator!=(map<Key, T, Compare, Alloc> const &a, map<Key, T, Compare, Alloc> const &b)
+	{ return (!(a == b)); }
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool	operator<(map<Key, T, Compare, Alloc> const &a, map<Key, T, Compare, Alloc> const &b)
+	{ return (ft::lexicographical_compare(a._rbt.begin(), a._rbt.end(), b._rbt.begin(), b._rbt.end())); }
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool	operator>(map<Key, T, Compare, Alloc> const &a, map<Key, T, Compare, Alloc> const &b)
+	{ return (b < a); }
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool	operator<=(map<Key, T, Compare, Alloc> const &a, map<Key, T, Compare, Alloc> const &b)
+	{ return (!(b < a)); }
+
+	template <class Key, class T, class Compare, class Alloc>
+	bool	operator>=(map<Key, T, Compare, Alloc> const &a, map<Key, T, Compare, Alloc> const &b)
+	{ return (!(a < b)); }
+
+	template <class Key, class T, class Compare, class Alloc>
+	void	swap(map<Key, T, Compare, Alloc> const &a, map<Key, T, Compare, Alloc> const &b)
+	{ a.swap(b); }
 }
 
 # include "Map.tpp"

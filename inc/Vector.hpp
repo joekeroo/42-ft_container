@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:25:17 by jhii              #+#    #+#             */
-/*   Updated: 2023/01/11 14:23:44 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 18:06:16 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 namespace	ft
 {
-	template <class Category, class T, 
-		class Distance = std::ptrdiff_t, class Pointer = T*, class Reference = T&>
-	struct iterator;
+	// template <class Category, class T, 
+	// 	class Distance = std::ptrdiff_t, class Pointer = T*, class Reference = T&>
+	// struct iterator;
 
 	template <class T, class Alloc = std::allocator<T> >
 	class vector

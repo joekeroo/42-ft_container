@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:27:58 by jhii              #+#    #+#             */
-/*   Updated: 2022/12/21 17:36:04 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 18:44:23 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,15 @@ template <class T> randomAccessIterator<T>
 }
 
 template <class T> typename randomAccessIterator<T>::reference
-randomAccessIterator<T>::operator*(void)
+randomAccessIterator<T>::operator*(void) const
 {
 	return (*this->ptr);
 }
 
 template <class T> typename randomAccessIterator<T>::pointer
-randomAccessIterator<T>::operator->(void)
+randomAccessIterator<T>::operator->(void) const
 {
-	return (this->ptr);
+	return (&(operator*()));
 }
 
 template <class T> randomAccessIterator<T>
@@ -96,100 +96,92 @@ template <class T> randomAccessIterator<T>
 	return (*(this->ptr + n));
 }
 
-template <typename T> bool
-ft::operator==(randomAccessIterator<T> const &a, randomAccessIterator<T> const &b)
+template <class T> bool
+randomAccessIterator<T>::operator==(randomAccessIterator<T> const &ref)
 {
-	return (a.ptr == b.ptr);
+	return (this->ptr == ref.ptr);
 }
 
-template <typename T> bool
-ft::operator!=(randomAccessIterator<T> const &a, randomAccessIterator<T> const &b)
+template <class T> bool
+randomAccessIterator<T>::operator!=(randomAccessIterator<T> const &ref)
 {
-	return (a.ptr != b.ptr);
+	return (this->ptr != ref.ptr);
 }
 
-template <typename T> bool
-ft::operator<=(randomAccessIterator<T> const &a, randomAccessIterator<T> const &b)
+template <class T> bool
+randomAccessIterator<T>::operator<=(randomAccessIterator<T> const &ref)
 {
-	return (!(a.ptr > b.ptr));
+	return (!(this->ptr > ref.ptr));
 }
 
-template <typename T> bool
-ft::operator>=(randomAccessIterator<T> const &a, randomAccessIterator<T> const &b)
+template <class T> bool
+randomAccessIterator<T>::operator>=(randomAccessIterator<T> const &ref)
 {
-	return (!(a.ptr < b.ptr));
+	return (!(this->ptr < ref.ptr));
 }
 
-template <typename T> bool
-ft::operator<(randomAccessIterator<T> const &a, randomAccessIterator<T> const &b)
+template <class T> bool
+randomAccessIterator<T>::operator<(randomAccessIterator<T> const &ref)
 {
-	return (b.ptr - a.ptr > 0);
+	return (ref.ptr - this->ptr > 0);
 }
 
-template <typename T> bool
-ft::operator>(randomAccessIterator<T> const &a, randomAccessIterator<T> const &b)
+template <class T> bool
+randomAccessIterator<T>::operator>(randomAccessIterator<T> const &ref)
 {
-	return (b.ptr < a.ptr);
+	return (ref.ptr < this->ptr);
 }
 
-template <typename T> randomAccessIterator<T>
-&operator+=(randomAccessIterator<T> const &a, typename randomAccessIterator<T>::difference_type n)
+template <class T>
+randomAccessIterator<T>
+&randomAccessIterator<T>::operator+=(difference_type n)
 {
 	typename randomAccessIterator<T>::difference_type m = n;
 	if (m >= 0)
 	{
 		while (m--)
-			++a.ptr;
+			++this->ptr;
 	}
 	else
 	{
 		while (m++)
-			--a.ptr;
+			--this->ptr;
 	}
-	return (a);
+	return (*this);
 }
 
-template <typename T> randomAccessIterator<T>
-&operator-=(randomAccessIterator<T> const &a, typename randomAccessIterator<T>::difference_type n)
+template <class T>
+randomAccessIterator<T>
+&randomAccessIterator<T>::operator-=(difference_type n)
 {
-	return (a.ptr += -n);
+	return (this->ptr += -n);
 }
 
-template <typename T> randomAccessIterator<T>
-ft::operator+(randomAccessIterator<T> const &a, typename randomAccessIterator<T>::difference_type n)
+template <class T>
+randomAccessIterator<T>
+randomAccessIterator<T>::operator+(difference_type n)
 {
-	randomAccessIterator<T> temp = a;
-	return (temp.ptr + n);
-}
-template <typename T> randomAccessIterator<T>
-ft::operator+(typename randomAccessIterator<T>::difference_type n, randomAccessIterator<T> const &a)
-{
-	randomAccessIterator<T> temp = a;
+	randomAccessIterator<T> temp = *this;
 	return (temp.ptr + n);
 }
 
-template <typename T> randomAccessIterator<T>
-ft::operator-(randomAccessIterator<T> const &a, typename randomAccessIterator<T>::difference_type n)
+template <class T>
+randomAccessIterator<T>
+randomAccessIterator<T>::operator-(difference_type n)
 {
-	randomAccessIterator<T> temp = a;
+	randomAccessIterator<T> temp = *this;
 	return (temp.ptr - n);
 }
 
-template <typename T> randomAccessIterator<T>
-ft::operator-(typename randomAccessIterator<T>::difference_type n, randomAccessIterator<T> const &a)
-{
-	randomAccessIterator<T> temp = a;
-	return (temp.ptr - n);
-}
-
-template <typename T> typename randomAccessIterator<T>::difference_type
-ft::operator-(randomAccessIterator<T> const &a, randomAccessIterator<T> const &b)
+template <class T>
+typename randomAccessIterator<T>::difference_type
+randomAccessIterator<T>::operator-(randomAccessIterator const &ref)
 {
 	typename randomAccessIterator<T>::difference_type temp;
-	if (a.ptr > b.ptr)
-		temp = a.ptr - b.ptr;
+	if (this->ptr > ref.ptr)
+		temp = this->ptr - ref.ptr;
 	else
-		temp = b.ptr - a.ptr;
+		temp = ref.ptr - this->ptr;
 	return (temp);
 }
 

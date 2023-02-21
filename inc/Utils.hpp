@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:32:38 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/20 16:39:54 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/20 18:58:04 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@
 
 namespace	ft
 {
-	template <class T> void
-	swap(T &a, T &b)
-	{
-		T	c(a);
-		a = b;
-		b = c;
-	}
+	// template <class T> void
+	// swap(T &a, T &b)
+	// {
+	// 	T	c(a);
+	// 	a = b;
+	// 	b = c;
+	// }
 
 	template <class T>
 	struct	node

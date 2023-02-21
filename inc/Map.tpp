@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 11:49:39 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/20 16:29:46 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/21 15:08:35 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,13 @@ map<Key, T, Compare, Alloc>::map(map const &ref): _rbt(this->_alloc, this->_comp
 {
 	// std::cout << GREEN "Map copy constructor called" RESET << std::endl;
 	this->_rbt = ref._rbt;
+}
+
+template <class Key, class T, class Compare, class Alloc>
+template <class InputIterator>
+map<Key, T, Compare, Alloc>::map(InputIterator first, InputIterator last, key_compare const &comp, allocator_type const &alloc): _comp(comp), _alloc(alloc), _rbt(first, last, alloc, comp)
+{
+	// std::cout << GREEN "Map constructor called" RESET << std::endl;
 }
 
 template <class Key, class T, class Compare, class Alloc> map<Key, T, Compare, Alloc>
@@ -178,9 +185,8 @@ void	map<Key, T, Compare, Alloc>::erase(iterator first, iterator last)
 template <class Key, class T, class Compare, class Alloc>
 void	map<Key, T, Compare, Alloc>::swap(map &ref)
 {
-	map<Key, T, Compare, Alloc>	temp(ref);
-	ref = *this;
-	*this = temp;
+	std::swap(this->_comp, ref._comp);
+	this->_rbt.swap(ref._rbt);
 }
 
 template <class Key, class T, class Compare, class Alloc>
@@ -272,7 +278,7 @@ ft::pair<typename map<Key, T, Compare, Alloc>::const_iterator, typename map<Key,
 map<Key, T, Compare, Alloc>::equal_range(key_type const &key) const
 {
 	ft::pair<const key_type, mapped_type> temp = ft::make_pair(key, mapped_type());
-	return (this->equal_range(temp));
+	return (this->_rbt.equal_range(temp));
 }
 
 template <class Key, class T, class Compare, class Alloc>

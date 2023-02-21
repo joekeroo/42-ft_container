@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 15:08:37 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/20 16:36:27 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/21 15:07:57 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,22 @@ redblacktree<T, Compare, Alloc>::redblacktree(node_allocator const &alloc, value
 }
 
 template <class T, class Compare, class Alloc>
-redblacktree<T, Compare, Alloc>::redblacktree(redblacktree const &ref)
+template <class InputIterator>
+redblacktree<T, Compare, Alloc>::redblacktree(InputIterator first, InputIterator last, node_allocator const &alloc, value_compare const &comp): _allocNode(alloc), _compare(comp)
+{
+	this->_size = 0;
+	this->_TNULL = this->_allocNode.allocate(1);
+	this->_TNULL->color = black;
+	this->_TNULL->left = nullptr;
+	this->_TNULL->right = nullptr;
+	this->_TNULL->isSentinel = true;
+	this->_root = this->_TNULL;
+	while (first != last)
+		insert(*first++);
+}
+
+template <class T, class Compare, class Alloc>
+redblacktree<T, Compare, Alloc>::redblacktree(redblacktree const &ref): _compare(ref.value_comp())
 {
 	this->_size = 0;
 	this->_TNULL = this->_allocNode.allocate(1);
@@ -332,6 +347,11 @@ void	redblacktree<T, Compare, Alloc>::eraseNode(value_type const &key)
 		this->_TNULL->left = nullptr;
 		this->_TNULL->right = nullptr;
 	}
+	else if (this->_size == 1)
+	{
+		this->_TNULL->left = this->_root;
+		this->_TNULL->right = this->_root;
+	}
 	else
 	{
 		if (this->_TNULL->left == z)
@@ -590,12 +610,6 @@ void	redblacktree<T, Compare, Alloc>::insertPrimal(value_type const &key, int co
 		return ;
 }
 
-template <class T, class Compare, class Alloc> const char
-*redblacktree<T, Compare, Alloc>::IndexOutOfBoundsException::what(void) const throw()
-{
-	return (YELLOW "Error: key not found" RESET);
-}
-
 template <class T, class Compare, class Alloc>
 typename redblacktree<T, Compare, Alloc>::iterator
 redblacktree<T, Compare, Alloc>::begin(void)
@@ -702,7 +716,7 @@ redblacktree<T, Compare, Alloc>::insert(InputIterator first, InputIterator last)
 template <class T, class Compare, class Alloc>
 void	redblacktree<T, Compare, Alloc>::erase(iterator it)
 {
-	if (it != end())
+	if (searchTree(*it) != this->_TNULL)
 		eraseNode(*it);
 }
 
@@ -711,7 +725,8 @@ typename redblacktree<T, Compare, Alloc>::size_type
 redblacktree<T, Compare, Alloc>::erase(value_type const &key)
 {
 	size_type	temp = this->_size;
-	eraseNode(key);
+	if (searchTree(key) != this->_TNULL)
+		eraseNode(key);
 	return (temp != this->_size);
 }
 
@@ -755,17 +770,18 @@ template <class T, class Compare, class Alloc>
 typename redblacktree<T, Compare, Alloc>::value_type
 &redblacktree<T, Compare, Alloc>::at(value_type const &key)
 {
-	if (searchTree(key) == this->_TNULL)
-		throw(IndexOutOfBoundsException());
 	return (*(searchTree(key)->data));
 }
 
 template <class T, class Compare, class Alloc>
 void	redblacktree<T, Compare, Alloc>::swap(redblacktree &ref)
 {
-	redblacktree<T, Compare, Alloc>	temp(ref);
-	ref = *this;
-	*this = temp;
+	std::swap(this->_size, ref._size);
+	std::swap(this->_root, ref._root);
+	std::swap(this->_TNULL, ref._TNULL);
+	std::swap(this->_allocPair, ref._allocPair);
+	std::swap(this->_allocNode, ref._allocNode);
+	std::swap(this->_compare, ref._compare);;
 }
 
 template <class T, class Compare, class Alloc>

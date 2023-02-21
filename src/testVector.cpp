@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 14:42:05 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/20 16:41:43 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/21 15:25:11 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	testVector(void)
 {
-	// testVectorAll();
+	testVectorAll();
 }
 
 void	testVectorAll(void)

@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/13 14:23:50 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/20 15:13:26 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/21 15:22:10 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ bidirectional_iterator<T>::bidirectional_iterator(node_pointer p): ptr(p)
 }
 
 template <class T>
-bidirectional_iterator<T>::bidirectional_iterator(bidirectional_iterator const &ref): ptr(ref.ptr)
+bidirectional_iterator<T>::bidirectional_iterator(bidirectional_iterator<typename std::remove_const<value_type>::type> const &ref): ptr(ref.ptr)
 {
 	// std::cout << GREEN "bidirectional_iterator copy constructor called" RESET << std::endl;
 }
@@ -49,14 +49,14 @@ bidirectional_iterator<T>::~bidirectional_iterator(void)
 
 template <class T>
 typename bidirectional_iterator<T>::reference
-bidirectional_iterator<T>::operator*(void)
+bidirectional_iterator<T>::operator*(void) const
 {
 	return (*(this->ptr->data));
 }
 
 template <class T>
 typename bidirectional_iterator<T>::pointer
-bidirectional_iterator<T>::operator->(void)
+bidirectional_iterator<T>::operator->(void) const
 {
 	return (&(operator*()));
 }
@@ -196,7 +196,7 @@ bidirectional_iterator<T>::operator==(bidirectional_iterator const &ref)
 template <class T> bool
 bidirectional_iterator<T>::operator!=(bidirectional_iterator const &ref)
 {
-	return (!(this->ptr == ref.ptr));
+	return (this->ptr->data != ref.ptr->data);
 }
 
 #endif
