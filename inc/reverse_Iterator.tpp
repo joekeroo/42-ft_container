@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 20:16:19 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/20 18:53:22 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/21 19:11:37 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,14 @@ template <class T> reverse_iterator<T>
 reverse_iterator<T>::operator+(typename reverse_iterator<T>::difference_type n) const
 {
 	this->_base -= n;
-	return (this);
+	return (*this);
 }
 
 template <class T> reverse_iterator<T>
 reverse_iterator<T>::operator-(typename reverse_iterator<T>::difference_type n) const
 {
 	this->_base += n;
-	return (this);
+	return (*this);
 }
 
 template <class T> reverse_iterator<T>
