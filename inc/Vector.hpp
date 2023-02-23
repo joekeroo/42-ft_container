@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:25:17 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/20 18:06:16 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/22 15:11:23 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ namespace	ft
 			typedef Alloc										allocator_type;
 			typedef size_t										size_type;
 			typedef ptrdiff_t									difference_type;
-			typedef randomAccessIterator<T>						iterator;
-			typedef randomAccessIterator<const T>				const_iterator;
+			typedef randomAccessIterator<value_type>			iterator;
+			typedef randomAccessIterator<const value_type>		const_iterator;
 			typedef reverse_iterator<iterator>					reverse_iterator;
 			typedef ft::reverse_iterator<const_iterator>		const_reverse_iterator;
 			typedef typename allocator_type::reference			reference;
@@ -46,10 +46,10 @@ namespace	ft
 			explicit	vector(size_type n, value_type const &value = value_type(), allocator_type const &alloc = allocator_type());
 			template <class InputIterator>
 			vector(InputIterator first, InputIterator last, allocator_type const &alloc = allocator_type(), typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
-			vector(vector const &);
+			vector(vector<typename std::remove_const<value_type>::type> const &);
 			~vector(void);
 
-			vector			&operator=(vector const &);
+			vector			&operator=(vector<typename std::remove_const<value_type>::type> const &);
 
 			iterator		begin(void);
 			const_iterator	begin(void) const;
@@ -70,9 +70,9 @@ namespace	ft
 			void			shrink_to_fit(void);
 
 			value_type		&operator[](int);
-			reference		at(size_t);
-			reference		front(void);
-			reference		back(void);
+			reference		at(size_t) const;
+			reference		front(void) const;
+			reference		back(void) const;
 			value_type		*data(void);
 
 			template <class InputIterator>
@@ -91,26 +91,19 @@ namespace	ft
 
 			allocator_type	get_allocator(void) const;
 
-		private:
 			size_type		_size;
 			size_type		_capacity;
 			value_type		*_arr;
 			allocator_type	_alloc;
-
-			class	IndexOutOfBoundsException: public std::exception
-			{ virtual const char	*what(void) const throw(); };
-			class	EmptyVectorArrayException: public std::exception
-			{ virtual const char	*what(void) const throw(); };
-			class	LengthErrorException: public std::exception
-			{ virtual const char	*what(void) const throw(); };
 	};
 
 	template <class T, class Alloc>
-	void	swap(vector<T, Alloc> &, vector<T, Alloc> &);
+	void	swap(vector<T, Alloc> &a, vector<T, Alloc> &b)
+	{ a.swap(b); }
 
 	template <class T, class Alloc>
 	bool	operator==(vector<T, Alloc> const &a, vector<T, Alloc> const &b)
-	{ return (ft::equal(a.begin(), a.end(), b.begin())); }
+	{ return (a.size() == b.size() && ft::equal(a.begin(), a.end(), b.begin())); }
 
 	template <class T, class Alloc>
 	bool	operator!=(vector<T, Alloc> const &a, vector<T, Alloc> const &b)

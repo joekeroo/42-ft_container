@@ -6,7 +6,7 @@
 /*   By: jhii <jhii@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 20:16:19 by jhii              #+#    #+#             */
-/*   Updated: 2023/02/21 19:11:37 by jhii             ###   ########.fr       */
+/*   Updated: 2023/02/22 20:04:47 by jhii             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ reverse_iterator<T>::reverse_iterator(void)
 }
 
 template <class T>
-reverse_iterator<T>::reverse_iterator(typename reverse_iterator<T>::iterator_type it)
+reverse_iterator<T>::reverse_iterator(iterator_type it)
 {
-	this->_base = it - 1;
 	// std::cout << GREEN "reverse_iterator constructor called" RESET << std::endl;
+	this->_base = it - 1;
 }
 
 template <class T>
 template <class Iter>
-reverse_iterator<T>::reverse_iterator(reverse_iterator<Iter> const &ref)
+reverse_iterator<T>::reverse_iterator(reverse_iterator<Iter> const &ref): _base(ref.base() - 1)
 {
-	this->_base = ref.base() - 1;
+	// std::cout << GREEN "reverse_iterator copy constructor called" RESET << std::endl;
 }
 
 template <class T>
@@ -79,39 +79,10 @@ reverse_iterator<T>::operator--(int)
 	return (temp);
 }
 
-template <class T> reverse_iterator<T>
-reverse_iterator<T>::operator+(typename reverse_iterator<T>::difference_type n) const
+template <class T> typename reverse_iterator<T>::reference
+reverse_iterator<T>::operator[](int n)
 {
-	this->_base -= n;
-	return (*this);
-}
-
-template <class T> reverse_iterator<T>
-reverse_iterator<T>::operator-(typename reverse_iterator<T>::difference_type n) const
-{
-	this->_base += n;
-	return (*this);
-}
-
-template <class T> reverse_iterator<T>
-&reverse_iterator<T>::operator+=(typename reverse_iterator<T>::difference_type n)
-{
-	this->_base -= n;
-	return (*this);
-}
-
-template <class T> reverse_iterator<T>
-&reverse_iterator<T>::operator-=(typename reverse_iterator<T>::difference_type n)
-{
-	this->_base += n;
-	return (*this);
-}
-
-template <class T> reverse_iterator<T>
-&reverse_iterator<T>::operator[](int n)
-{
-	this->_base -= n;
-	return (*this);
+	return (*(this->_base - n));
 }
 
 template <class T> typename reverse_iterator<T>::reference
@@ -126,46 +97,10 @@ reverse_iterator<T>::operator->(void) const
 	return (&(operator*()));
 }
 
-template <class T> bool
-reverse_iterator<T>::operator==(reverse_iterator const &ref)
-{
-	return (this->base() == ref.base());
-}
-
-template <class T> bool
-reverse_iterator<T>::operator!=(reverse_iterator const &ref)
-{
-	return (this->base() != ref.base());
-}
-
 template <class Iter> typename reverse_iterator<Iter>::iterator_type
 reverse_iterator<Iter>::base(void) const
 {
 	return (this->_base + 1);
-}
-
-template <class T> bool
-reverse_iterator<T>::operator<=(reverse_iterator<T> const &ref)
-{
-	return (this->base() <= ref.base());
-}
-
-template <class T> bool
-reverse_iterator<T>::operator>=(reverse_iterator<T> const &ref)
-{
-	return (this->base() >= ref.base());
-}
-
-template <class T> bool
-reverse_iterator<T>::operator<(reverse_iterator<T> const &ref)
-{
-	return (this->base() < ref.base());
-}
-
-template <class T> bool
-reverse_iterator<T>::operator>(reverse_iterator<T> const &ref)
-{
-	return (this->base() > ref.base());
 }
 
 #endif
