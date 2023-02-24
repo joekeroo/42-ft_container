@@ -39,33 +39,33 @@ namespace	ft
 			size_type	size(void) const;
 			reference	top(void);
 
-		protected:
+		public:
 			container_type	c;
 	};
 
 	template <class T, class Container>
 	bool	operator==(stack<T, Container> const &a, stack<T, Container> const &b)
-	{ return (a == b); }
+	{ return (a.c == b.c); }
 
 	template <class T, class Container>
 	bool	operator!=(stack<T, Container> const &a, stack<T, Container> const &b)
-	{ return (a != b); }
+	{ return (a.c != b.c); }
 
 	template <class T, class Container>
 	bool	operator<(stack<T, Container> const &a, stack<T, Container> const &b)
-	{ return (a < b); }
+	{ return (a.c < b.c); }
 
 	template <class T, class Container>
 	bool	operator<=(stack<T, Container> const &a, stack<T, Container> const &b)
-	{ return (a <= b); }
+	{ return (a.c <= b.c); }
 
 	template <class T, class Container>
 	bool	operator>(stack<T, Container> const &a, stack<T, Container> const &b)
-	{ return (a > b); }
+	{ return (a.c > b.c); }
 
 	template <class T, class Container>
 	bool	operator>=(stack<T, Container> const &a, stack<T, Container> const &b)
-	{ return (a >= b); }
+	{ return (a.c >= b.c); }
 }
 
 #include "Stack.tpp"

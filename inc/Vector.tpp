@@ -448,14 +448,14 @@ vector<T, Alloc>::erase(iterator position)
 template <class T, class Alloc> typename vector<T, Alloc>::iterator
 vector<T, Alloc>::erase(iterator first, iterator last)
 {
-	difference_type	diff = first - last;
-	difference_type	index = last - this->begin();
-	for (iterator it = last; it != this->end(); it++)
-		*(it - diff) = *(it);
+	difference_type	diff = last - first;
+	difference_type	pos = this->begin() - first;
+	for (iterator it = last; it != this->end(); ++it)
+		*(it - diff) = *it;
 	for (difference_type i = 1; i <= diff; ++i)
 		this->_alloc.destroy(this->_arr + this->_size - i);
 	this->_size -= (size_t)diff;
-	return (this->begin() + index);
+	return (this->begin() - pos);
 }
 
 template <class T, class Alloc> void
