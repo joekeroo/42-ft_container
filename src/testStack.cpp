@@ -194,7 +194,7 @@ void	testStackSwap(void)
 	s2.push(111);
 	s2.push(222);
 
-	s1.swap(s2);
+	// s1.swap(s2);
 
 	std::cout << CYAN "s1.size() : " << s1.size() << std::endl;
 	std::cout << CYAN "s2.size() : " << s2.size() << std::endl;

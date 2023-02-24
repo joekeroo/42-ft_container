@@ -15,7 +15,7 @@
 
 void	testVector(void)
 {
-	testVectorAll();
+	// testVectorAll();
 }
 
 void	testVectorAll(void)

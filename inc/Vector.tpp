@@ -63,7 +63,7 @@ vector<T, Alloc>::vector(InputIterator first, InputIterator last, allocator_type
 }
 
 template <class T, class Alloc>
-vector<T, Alloc>::vector(vector<typename std::remove_const<value_type>::type> const &ref): _size(ref.size()), _capacity(ref.capacity()), _alloc(allocator_type())
+vector<T, Alloc>::vector(vector<typename ft::remove_const<value_type>::type> const &ref): _size(ref.size()), _capacity(ref.capacity()), _alloc(allocator_type())
 {
 	// std::cout << GREEN "Vector copy constructor called" RESET << std::endl;
 	if (this->_size > 0)
@@ -77,7 +77,7 @@ vector<T, Alloc>::vector(vector<typename std::remove_const<value_type>::type> co
 }
 
 template <class T, class Alloc> vector<T, Alloc>
-&vector<T, Alloc>::operator=(vector<typename std::remove_const<value_type>::type> const &ref)
+&vector<T, Alloc>::operator=(vector<typename ft::remove_const<value_type>::type> const &ref)
 {
 	// std::cout << GREEN "Vector copy assignment operator called" RESET << std::endl;
 	if (this->_capacity)

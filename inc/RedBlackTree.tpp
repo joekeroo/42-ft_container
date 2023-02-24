@@ -754,7 +754,8 @@ size_t	redblacktree<T, Compare, Alloc>::size(void) const
 template <class T, class Compare, class Alloc>
 size_t	redblacktree<T, Compare, Alloc>::max_size(void) const
 {
-	return ((std::numeric_limits<size_type>::max() / sizeof(value_type)) / 2);
+	return (1);
+	// return ((std::numeric_limits<size_type>::max() / sizeof(value_type)) / 2);
 }
 
 template <class T, class Compare, class Alloc>

@@ -13,7 +13,7 @@
 #ifndef VECTOR_HPP
 # define VECTOR_HPP
 
-# include <iterator>
+# include "Utils.hpp"
 # include "Iterator.hpp"
 # include "reverse_Iterator.hpp"
 # include "is_integral.hpp"
@@ -21,10 +21,6 @@
 
 namespace	ft
 {
-	// template <class Category, class T, 
-	// 	class Distance = std::ptrdiff_t, class Pointer = T*, class Reference = T&>
-	// struct iterator;
-
 	template <class T, class Alloc = std::allocator<T> >
 	class vector
 	{
@@ -32,7 +28,8 @@ namespace	ft
 			typedef T											value_type;
 			typedef Alloc										allocator_type;
 			typedef size_t										size_type;
-			typedef ptrdiff_t									difference_type;
+			// typedef std::ptrdiff_t								difference_type;
+			typedef __gnu_cxx::ptrdiff_t						difference_type;
 			typedef randomAccessIterator<value_type>			iterator;
 			typedef randomAccessIterator<const value_type>		const_iterator;
 			typedef reverse_iterator<iterator>					reverse_iterator;
@@ -46,10 +43,10 @@ namespace	ft
 			explicit	vector(size_type n, value_type const &value = value_type(), allocator_type const &alloc = allocator_type());
 			template <class InputIterator>
 			vector(InputIterator first, InputIterator last, allocator_type const &alloc = allocator_type(), typename ft::enable_if<!ft::is_integral<InputIterator>::value>::type* = 0);
-			vector(vector<typename std::remove_const<value_type>::type> const &);
+			vector(vector<typename ft::remove_const<value_type>::type> const &);
 			~vector(void);
 
-			vector			&operator=(vector<typename std::remove_const<value_type>::type> const &);
+			vector			&operator=(vector<typename ft::remove_const<value_type>::type> const &);
 
 			iterator		begin(void);
 			const_iterator	begin(void) const;

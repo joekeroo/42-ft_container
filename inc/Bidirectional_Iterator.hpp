@@ -15,6 +15,23 @@
 
 # include "Utils.hpp"
 
+// added for wsl compiler
+const class	nullptr_t 
+{
+	public:
+		template <class T>
+		inline operator T*() const
+		{ return (0); }
+
+		template <class C, class T>
+		inline operator T C::*() const 
+		{ return (0); }
+
+	private:
+		void operator&() const;
+
+} nullptr = {};
+
 namespace	ft
 {
 	template <class T>
@@ -24,8 +41,9 @@ namespace	ft
 			typedef T														value_type;
 			typedef value_type												*pointer;
 			typedef value_type												&reference;
-			typedef	ft::node<typename std::remove_const<value_type>::type>	*node_pointer;
-			typedef std::ptrdiff_t											difference_type;
+			typedef	ft::node<typename ft::remove_const<value_type>::type>	*node_pointer;
+			// typedef std::ptrdiff_t											difference_type;
+			typedef __gnu_cxx::ptrdiff_t									difference_type;
 			typedef std::random_access_iterator_tag							iterator_category;
 
 			node_pointer	ptr;
@@ -33,7 +51,7 @@ namespace	ft
 			bidirectional_iterator(void);
 			~bidirectional_iterator(void);
 			bidirectional_iterator(node_pointer p);
-			bidirectional_iterator(bidirectional_iterator<typename std::remove_const<value_type>::type> const &ref);
+			bidirectional_iterator(bidirectional_iterator<typename ft::remove_const<value_type>::type> const &ref);
 
 			bidirectional_iterator	&operator=(bidirectional_iterator const &ref);
 

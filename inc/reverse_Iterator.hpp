@@ -85,7 +85,8 @@ namespace	ft
 	}
 
 	template <class T> reverse_iterator<T>
-	&operator+=(reverse_iterator<T> &ref, ptrdiff_t n)
+	// &operator+=(reverse_iterator<T> &ref, ptrdiff_t n)
+	&operator+=(reverse_iterator<T> &ref, __gnu_cxx::ptrdiff_t n)
 	{
 		reverse_iterator<T>	temp(ref.base() - n);
 		ref = temp;
@@ -93,7 +94,8 @@ namespace	ft
 	}
 
 	template <class T> reverse_iterator<T>
-	&operator-=(reverse_iterator<T> &ref, ptrdiff_t n)
+	// &operator-=(reverse_iterator<T> &ref, ptrdiff_t n)
+	&operator-=(reverse_iterator<T> &ref, __gnu_cxx::ptrdiff_t n)
 	{
 		reverse_iterator<T>	temp(ref.base() + n);
 		ref = temp;
@@ -128,7 +130,8 @@ namespace	ft
 		return (temp);
 	}
 
-	template <class T, class U> ptrdiff_t
+	// template <class T, class U> ptrdiff_t
+	template <class T, class U> __gnu_cxx::ptrdiff_t
 	operator-(reverse_iterator<T> const &a, reverse_iterator<U> const &b)
 	{
 		return (b.base() - a.base());

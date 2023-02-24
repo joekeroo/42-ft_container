@@ -28,7 +28,7 @@ randomAccessIterator<T>::randomAccessIterator(randomAccessIterator::pointer in):
 }
 
 template <class T>
-randomAccessIterator<T>::randomAccessIterator(randomAccessIterator<typename std::remove_const<value_type>::type> const &ref)
+randomAccessIterator<T>::randomAccessIterator(randomAccessIterator<typename ft::remove_const<value_type>::type> const &ref)
 {
 	// std::cout << GREEN "randomAccessIterator copy constructor called" RESET << std::endl;
 	*this = ref;
@@ -41,7 +41,7 @@ randomAccessIterator<T>::~randomAccessIterator(void)
 }
 
 template <class T> randomAccessIterator<T>
-&randomAccessIterator<T>::operator=(randomAccessIterator<typename std::remove_const<value_type>::type> const &ref)
+&randomAccessIterator<T>::operator=(randomAccessIterator<typename ft::remove_const<value_type>::type> const &ref)
 {
 	// std::cout << GREEN "randomAccessIterator copy assignment operator called" RESET << std::endl;
 	this->ptr = ref.ptr;

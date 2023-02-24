@@ -23,7 +23,8 @@ namespace	ft
 		typedef T									value_type;
 		typedef value_type							*pointer;
 		typedef value_type							&reference;
-		typedef std::ptrdiff_t						difference_type;
+		// typedef std::ptrdiff_t						difference_type;
+		typedef __gnu_cxx::ptrdiff_t				difference_type;
 		typedef std::random_access_iterator_tag		iterator_category;
 
 		pointer	ptr;
@@ -31,9 +32,9 @@ namespace	ft
 		randomAccessIterator(void);
 		~randomAccessIterator(void);
 		randomAccessIterator(pointer);
-		randomAccessIterator(randomAccessIterator<typename std::remove_const<value_type>::type> const &);
+		randomAccessIterator(randomAccessIterator<typename ft::remove_const<value_type>::type> const &);
 
-		randomAccessIterator	&operator=(randomAccessIterator<typename std::remove_const<value_type>::type> const &);
+		randomAccessIterator	&operator=(randomAccessIterator<typename ft::remove_const<value_type>::type> const &);
 
 		randomAccessIterator	&operator++(void);
 		randomAccessIterator	&operator--(void);
@@ -81,17 +82,21 @@ namespace	ft
 	}
 
 	template <class T> randomAccessIterator<T>
-	&operator+=(randomAccessIterator<T> &ref, ptrdiff_t n)
+	// &operator+=(randomAccessIterator<T> &ref, ptrdiff_t n)
+	&operator+=(randomAccessIterator<T> &ref, __gnu_cxx::ptrdiff_t n)
 	{
-		for (ptrdiff_t i = 0; i < n; ++i)
+		// for (ptrdiff_t i = 0; i < n; ++i)
+		for (__gnu_cxx::ptrdiff_t i = 0; i < n; ++i)
 			++ref;
 		return (ref);
 	}
 
 	template <class T> randomAccessIterator<T>
-	&operator-=(randomAccessIterator<T> &ref, ptrdiff_t n)
+	// &operator-=(randomAccessIterator<T> &ref, ptrdiff_t n)
+	&operator-=(randomAccessIterator<T> &ref, __gnu_cxx::ptrdiff_t n)
 	{
-		for (ptrdiff_t i = 0; i < n; ++i)
+		// for (ptrdiff_t i = 0; i < n; ++i)
+		for (__gnu_cxx::ptrdiff_t i = 0; i < n; ++i)
 			--ref;
 		return (ref);
 	}
@@ -124,7 +129,8 @@ namespace	ft
 		return (temp);
 	}
 
-	template <class T, class U> ptrdiff_t
+	// template <class T, class U> ptrdiff_t
+	template <class T, class U> __gnu_cxx::ptrdiff_t
 	operator-(randomAccessIterator<T> const &a, randomAccessIterator<U> const &b)
 	{
 		return (a.ptr - b.ptr);

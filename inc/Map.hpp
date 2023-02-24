@@ -14,6 +14,8 @@
 # define MAP_HPP
 
 # include "Pair.hpp"
+# include "Utils.hpp"
+# include "Algorithm.hpp"
 # include "RedBlackTree.hpp"
 
 namespace	ft
@@ -26,7 +28,8 @@ namespace	ft
 			typedef T											mapped_type;
 			typedef Alloc										allocator_type;
 			typedef size_t										size_type;
-			typedef ptrdiff_t									difference_type;
+			// typedef std::ptrdiff_t								difference_type;
+			typedef __gnu_cxx::ptrdiff_t						difference_type;
 			typedef Compare										key_compare;
 			typedef ft::pair<const Key, T>						value_type;
 

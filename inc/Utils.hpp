@@ -25,17 +25,45 @@
 
 # include <fstream>
 # include <iostream>
-# include "Vector.hpp"
+# include <iterator>
 
 namespace	ft
 {
-	// template <class T> void
-	// swap(T &a, T &b)
-	// {
-	// 	T	c(a);
-	// 	a = b;
-	// 	b = c;
-	// }
+	template <typename T>
+	struct	remove_const
+	{
+		typedef T	type;
+	};
+
+	template <typename T>
+	struct	remove_const<const T>
+	{
+		typedef T	type;
+	};
+
+	template <typename T>
+	struct	remove_const<const T[]>
+	{
+		typedef T	type[];
+	};
+
+	template <typename T, size_t N>
+	struct	remove_const<const T[N]>
+	{
+		typedef T	type[N];
+	};
+
+	template <typename T>
+	struct	remove_const<T[]>
+	{
+		typedef T	type[];
+	};
+
+	template <typename T, size_t N>
+	struct	remove_const<T[N]>
+	{
+		typedef T	type[N];
+	};
 
 	template <class T>
 	struct	node

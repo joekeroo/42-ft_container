@@ -28,7 +28,7 @@ bidirectional_iterator<T>::bidirectional_iterator(node_pointer p): ptr(p)
 }
 
 template <class T>
-bidirectional_iterator<T>::bidirectional_iterator(bidirectional_iterator<typename std::remove_const<value_type>::type> const &ref): ptr(ref.ptr)
+bidirectional_iterator<T>::bidirectional_iterator(bidirectional_iterator<typename ft::remove_const<value_type>::type> const &ref): ptr(ref.ptr)
 {
 	// std::cout << GREEN "bidirectional_iterator copy constructor called" RESET << std::endl;
 }
