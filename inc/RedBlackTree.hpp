@@ -119,7 +119,7 @@ namespace	ft
 			void		printHelper(node_ptr root, std::string indent, bool last);
 			node_ptr	searchTreeHelper(node_ptr &node, value_type const &key);
 
-			void		insertNode(value_type const &key);
+			node_ptr	insertNode(value_type const &key);
 			void		eraseNode(value_type const &key);
 			void		insertFix(node_ptr node);
 			void		deleteFix(node_ptr node);

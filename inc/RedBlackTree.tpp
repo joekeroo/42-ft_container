@@ -247,10 +247,11 @@ redblacktree<T, Compare, Alloc>::searchTreeHelper(node_ptr &node, value_type con
 	return (node);
 }
 
-template <class T, class Compare, class Alloc>
-void	redblacktree<T, Compare, Alloc>::insertNode(value_type const &key)
+template <class T, class Compare, class Alloc> typename redblacktree<T, Compare, Alloc>::node_ptr
+redblacktree<T, Compare, Alloc>::insertNode(value_type const &key)
 {
-	if (this->searchTree(key) == this->_TNULL)
+	node_ptr	temp;
+	if ((temp = this->searchTree(key)) == this->_TNULL)
 	{
 		node_ptr	node = this->_allocNode.allocate(1);
 		node->data = this->_allocPair.allocate(1);
@@ -295,12 +296,14 @@ void	redblacktree<T, Compare, Alloc>::insertNode(value_type const &key)
 		if (node->parent == nullptr)
 		{
 			node->color = black;
-			return ;
+			return (node);
 		}
 		if (node->parent->parent == nullptr)
-			return ;
+			return (node);
 		insertFix(node);
+		return (node);
 	}
+	return (temp);
 }
 
 template <class T, class Compare, class Alloc>
@@ -684,14 +687,12 @@ redblacktree<T, Compare, Alloc>::insert(value_type const &key)
 {
 	if (searchTree(key) == this->_TNULL)
 	{
-		insertNode(key);
-		ft::pair<iterator, bool> temp(find(key), true);
+		ft::pair<iterator, bool> temp(insertNode(key), true);
 		return (temp);
 	}
 	else
 	{
-		insertNode(key);
-		ft::pair<iterator, bool> temp(find(key), false);
+		ft::pair<iterator, bool> temp(insertNode(key), false);
 		return (temp);
 	}
 }
@@ -701,8 +702,7 @@ typename redblacktree<T, Compare, Alloc>::iterator
 redblacktree<T, Compare, Alloc>::insert(iterator it, value_type const &key)
 {
 	(void)it;
-	insertNode(key);
-	return (find(key));
+	return (insertNode(key));
 }
 
 template <class T, class Compare, class Alloc>
