@@ -2,7 +2,9 @@
 
 In this project, we will be re-creating the following containers and their associated functions in `C++98`:
 
-- [`Vector`](https://cplusplus.com/reference/vector/vector/) [`Stack`](https://cplusplus.com/reference/stack/stack/) [`Map`](https://cplusplus.com/reference/map/map/)
+- [`Map`](https://cplusplus.com/reference/map/map/)
+- [`Stack`](https://cplusplus.com/reference/stack/stack/)
+- [`Vector`](https://cplusplus.com/reference/vector/vector/)
 
 # Project Requirements
 
@@ -22,9 +24,9 @@ In this project, we will be re-creating the following containers and their assoc
 To use the library classes in your code, simply include its' header:
 
 ```
-#include "Vector.hpp"
-#include "Stack.hpp"
 #include "Map.hpp"
+#include "Stack.hpp"
+#include "Vector.hpp"
 ```
 
 # ft_container Tester
