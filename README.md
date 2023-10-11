@@ -2,7 +2,7 @@
 
 In this project, we will be re-creating the following containers and their associated functions in `C++98`:
 
-- [`Vector`](https://cplusplus.com/reference/vector/vector/), [`Stack`](https://cplusplus.com/reference/stack/stack/), [`Map`](https://cplusplus.com/reference/map/map/)
+- [`Vector`](https://cplusplus.com/reference/vector/vector/) [`Stack`](https://cplusplus.com/reference/stack/stack/) [`Map`](https://cplusplus.com/reference/map/map/)
 
 # Project Requirements
 
